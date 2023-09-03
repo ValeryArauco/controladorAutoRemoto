@@ -16,6 +16,11 @@ class ControladorAuto{
     }
     return "Formato válido.";
   }
+
+  obtenerComandos(comandos){
+
+    return "IAIAIAIAA";
+  }
 }
 
 export default ControladorAuto;
