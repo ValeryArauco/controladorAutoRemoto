@@ -2,7 +2,8 @@ class ControladorAuto{
 
   
   obtenerPosicionInicial(comandos){
-    return "1,2N";
+    const partes = comandos.split('/');
+    return partes[1];
   }
 }
 
