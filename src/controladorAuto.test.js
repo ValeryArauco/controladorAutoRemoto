@@ -96,5 +96,10 @@ describe("Validar que el formato de los limites ingresados -> mostrar un mensaje
     expect(resultado).toEqual(mensaje);
   });
 
-  
+  it("No debería devolver un mensaje de error si el formato de los límites es correcto", () => {
+    const comandos = "5,5/1,2N/IAIAIAIAA"; 
+    const resultado = controladorAuto.validarFormatoLimites(comandos);
+    const mensaje = ""; 
+    expect(resultado).toEqual(mensaje);
+  });
 });

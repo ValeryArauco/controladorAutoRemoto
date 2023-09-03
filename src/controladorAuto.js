@@ -46,9 +46,19 @@ class ControladorAuto{
 
   validarFormatoLimites(comandos) {
   
+    const partes = comandos.split('/');
+    const limites = partes[0];
 
-    return "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros."; 
+    const formatoValido = /^\d+,\d+$/;
+    
+    if (!formatoValido.test(limites)) {
+      return "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros."; 
+    }
+
+    return ""; 
   }
+
+  
 
 }
 

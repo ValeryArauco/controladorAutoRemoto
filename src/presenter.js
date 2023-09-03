@@ -13,5 +13,6 @@ form.addEventListener("submit", (event) => {
   div.innerHTML = "<p>" + "Posicion Inicial: " + controladorAuto.obtenerPosicionInicial(comandos) + "</p>"
   + "<p>" + "Comandos: " + controladorAuto.obtenerComandos(comandos) + "</p>"
   + "<p>" + "Mensaje: " + controladorAuto.validarPosicionInicial(comandos) + "</p>"
-  + "<p>" + controladorAuto.validarPosicionInicialDentroLimites(comandos) + "</p>";
+  + "<p>" + controladorAuto.validarPosicionInicialDentroLimites(comandos) + "</p>"
+  + "<p>" + controladorAuto.validarFormatoLimites(comandos) + "</p>";
 });
