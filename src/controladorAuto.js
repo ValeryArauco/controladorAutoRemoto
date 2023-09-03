@@ -17,7 +17,6 @@ class ControladorAuto{
     return "Formato válido.";
   }
 
-  obtenerMensajeDeError()
 
   obtenerComandos(comandos){
     const partes = comandos.split('/');
@@ -25,8 +24,22 @@ class ControladorAuto{
   }
 
   validarPosicionInicialDentroLimites(comandos){
-    return false;
+    const limiteX = 10;
+    const limiteY = 10;
+  
+    const partes = comandos.split('/');
+    const posicionInicial = partes[1].split(',');
+  
+    const x = parseInt(posicionInicial[0]);
+    const y = parseInt(posicionInicial[1]);
+  
+    if (x < 0 || x > limiteX || y < 0 || y > limiteY) {
+      return "La posición inicial está fuera de los límites permitidos.";
+    }
+  
+    return "";
   }
+
 }
 
 export default ControladorAuto;
