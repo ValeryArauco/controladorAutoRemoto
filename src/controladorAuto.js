@@ -18,8 +18,8 @@ class ControladorAuto{
   }
 
   obtenerComandos(comandos){
-
-    return "IAIAIAIAA";
+    const partes = comandos.split('/');
+    return partes[2];
   }
 }
 

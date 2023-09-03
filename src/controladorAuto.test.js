@@ -45,4 +45,11 @@ describe("Permitir que el usuario ingrese los comandos a ejecutar y  los muestre
     expect(comandosObtenidos).toEqual("IAIAIAIAA");
   });
 
+  it("Deberia devolver los comandos ingresados por el usuario", () => {
+    
+    const comandosIngresados = "5,5/1,2N/IADDAIAA";
+    const comandosObtenidos = constroladorAuto.obtenerComandos(comandosIngresados);
+    expect(comandosObtenidos).toEqual("IADDAIAA");
+  });
+
 });
