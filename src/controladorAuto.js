@@ -24,10 +24,14 @@ class ControladorAuto{
   }
 
   validarPosicionInicialDentroLimites(comandos){
-    const limiteX = 10;
-    const limiteY = 10;
-  
     const partes = comandos.split('/');
+
+    const limites = partes[0].split(',');
+
+    const limiteX = parseInt(limites[0]);
+    const limiteY = parseInt(limites[1]);
+  
+    
     const posicionInicial = partes[1].split(',');
   
     const x = parseInt(posicionInicial[0]);
