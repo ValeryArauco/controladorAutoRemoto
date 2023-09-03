@@ -10,5 +10,6 @@ form.addEventListener("submit", (event) => {
   const comandos = commands.value;
   
   const controladorAuto = new ControladorAuto();
-  div.innerHTML = "<p>" + controladorAuto.obtenerPosicionInicial(comandos) + "</p>";
+  div.innerHTML = "<p>" + "Posicion Inicial:" + controladorAuto.obtenerPosicionInicial(comandos) + "</p>"
+  + "<p>" + "Mensaje:" + controladorAuto.validarPosicionInicial(comandos) + "</p>";
 });
