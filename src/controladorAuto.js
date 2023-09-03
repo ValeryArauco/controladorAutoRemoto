@@ -44,6 +44,12 @@ class ControladorAuto{
     return "";
   }
 
+  validarFormatoLimites(comandos) {
+  
+
+    return "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros."; 
+  }
+
 }
 
 export default ControladorAuto;

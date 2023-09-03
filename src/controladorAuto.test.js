@@ -84,4 +84,17 @@ describe("Validar que la posicion inicial se encuentre dentro de los limites", (
     expect(resultado).toEqual(mensaje);
   });
   
+  
+});
+
+describe("Validar que el formato de los limites ingresados -> mostrar un mensaje al usuario", () => {
+  
+  it("Debería devolver un mensaje de error si el formato de los límites es incorrecto", () => {
+    const comandos = "5x5/1,2N/IAIAIAIAA"; 
+    const resultado = controladorAuto.validarFormatoLimites(comandos);
+    const mensaje = "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.";
+    expect(resultado).toEqual(mensaje);
+  });
+
+  
 });
