@@ -17,9 +17,15 @@ class ControladorAuto{
     return "Formato válido.";
   }
 
+  obtenerMensajeDeError()
+
   obtenerComandos(comandos){
     const partes = comandos.split('/');
     return partes[2];
+  }
+
+  validarPosicionInicialDentroLimites(comandos){
+    return false;
   }
 }
 
