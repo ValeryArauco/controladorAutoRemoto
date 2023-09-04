@@ -69,6 +69,8 @@ class ControladorAuto{
         return nuevaPosicion + "N";
       case 'O':
         return nuevaPosicion + "S";
+      case 'S':
+        return nuevaPosicion + "E";
   
       default:
         return posicionActual; 
