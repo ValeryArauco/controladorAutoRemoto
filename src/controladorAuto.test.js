@@ -209,3 +209,13 @@ describe("Ignorar que el auto se salga de la superficie al ejecutar el comando '
     expect(nuevaPosicion).toEqual("0,5O");
   });
 });
+
+
+describe("Permitir ejecutar varios comandos y mostrarlos", () => {
+  it("Debería mostrar la posicion final tras ejecutar más de un comando", () => {
+    const comandos = "5,5/1,2N/IAIAIAIAA";
+    const nuevaPosicion = controladorAuto.ejecutarVariosComandos(comandos);
+    expect(nuevaPosicion).toEqual("1,3N");
+  });
+  
+});

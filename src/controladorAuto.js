@@ -155,7 +155,19 @@ class ControladorAuto{
     }
   }
 
-  
+  ejecutarVariosComandos(comandos){
+    let posicionActual = this.obtenerPosicionInicial(comandos);
+    const comandosAEjecutar = this.obtenerComandos(comandos);
+    
+    const limiteX = this.obtenerLimiteX(comandos); 
+    const limiteY = this.obtenerLimiteY(comandos);
+
+    for (let i = 0; i < comandosAEjecutar.length; i++) {
+      const comando = limiteX + "," + limiteY + "/" + posicionActual + "/" + comandosAEjecutar[i];
+      posicionActual = this.ejecutarComandos(comando);
+    }
+    return posicionActual;
+  }
 }
 
 
