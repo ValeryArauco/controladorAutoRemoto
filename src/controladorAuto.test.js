@@ -156,3 +156,11 @@ describe("Ejecutar el comando 'D' (cambiar dirección) y mostrar la posición fi
     expect(nuevaPosicion).toEqual('1,2O');
   });
 });
+
+describe("Ejecutar el comando 'A' (Avanzar) y mostrar la posición final", () => {
+  it("Debería avanzar una posición hacia el Norte y mostrar la nueva posición" , () => {
+    const comandos = "5,5/1,2N/A";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
+    expect(nuevaPosicion).toEqual('1,3N');
+  });
+});

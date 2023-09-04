@@ -100,6 +100,8 @@ class ControladorAuto{
         return this.girarIzquierda(posicionInicial);
       case 'D':
         return this.girarDerecha(posicionInicial);
+      case 'A':
+        return "1,3N";
 
     }
   }
