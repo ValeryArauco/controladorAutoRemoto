@@ -97,9 +97,15 @@ class ControladorAuto{
     const x = parseInt(nuevaPosicion.split(',')[0]);
     const y = parseInt(nuevaPosicion.split(',')[1]);
 
+    let nuevoX = x;
+    let nuevoY = y;
+    const limiteX = 5;
+    const limiteY = 5;
+
     switch (direccionActual) {
       case 'N':
-        return `${x},${y + 1}${direccionActual}`;
+        nuevoY = y + 1;
+        break;
       case 'S':
         return `${x},${y - 1}${direccionActual}`;
       case 'E':
@@ -107,7 +113,16 @@ class ControladorAuto{
       case 'O':
         return `${x - 1},${y}${direccionActual}`;
     }
+
+    if (nuevoX >= 0 && nuevoX <= limiteX && nuevoY >= 0 && nuevoY <= limiteY) {
+      return `${nuevoX},${nuevoY}${direccionActual}`;
+    } else {
+      return posicionActual;
+    }
   }
+
+
+
 
   ejecutarComandos(comandos){
     const posicionInicial = this.obtenerPosicionInicial(comandos);
@@ -119,9 +134,12 @@ class ControladorAuto{
         return this.girarDerecha(posicionInicial);
       case 'A':
         return this.avanzar(posicionInicial);
-
     }
   }
+
+  
 }
+
+
 
 export default ControladorAuto;

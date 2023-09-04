@@ -171,15 +171,24 @@ describe("Ejecutar el comando 'A' (Avanzar) y mostrar la posición final", () =>
   });
 
   it("Debería avanzar una posición hacia el Este y mostrar la nueva posición", () => {
-    const posicionActual = "1,2E";
-    const nuevaPosicion = controladorAuto.avanzar(posicionActual);
+    const comandos = "5,5/1,2E/A";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual("2,2E");
   });
 
   it("Debería avanzar una posición hacia el Oeste y mostrar la nueva posición", () => {
-    const posicionActual = "1,2O";
-    const nuevaPosicion = controladorAuto.avanzar(posicionActual);
+    const comandos = "5,5/1,2O/A";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual("0,2O");
+  });
+
+});
+
+describe("Ignorar que el auto se salga de la superficie al ejecutar el comando 'A'", () => {
+  it("Debería ignorar avanzar una posición y mostrar la misma posición ingresada cuando la direccion es N", () => {
+    const comandos = "5,5/2,5N/A";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
+    expect(nuevaPosicion).toEqual("2,5N");
   });
 
 });
