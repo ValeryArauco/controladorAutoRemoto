@@ -86,6 +86,8 @@ class ControladorAuto{
         return nuevaPosicion + "S";
       case 'O':
         return nuevaPosicion + "N";
+      case 'S':
+        return nuevaPosicion + "O";
   
     }
   }
