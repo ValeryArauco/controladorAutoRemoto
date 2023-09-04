@@ -23,19 +23,37 @@ class ControladorAuto{
     return partes[2];
   }
 
-  validarPosicionInicialDentroLimites(comandos){
+  obtenerLimiteX(comandos){
     const partes = comandos.split('/');
-
     const limites = partes[0].split(',');
-
-    const limiteX = parseInt(limites[0]);
-    const limiteY = parseInt(limites[1]);
-  
     
-    const posicionInicial = partes[1].split(',');
-  
-    const x = parseInt(posicionInicial[0]);
-    const y = parseInt(posicionInicial[1]);
+    return parseInt(limites[0]);
+  }
+
+  obtenerLimiteY(comandos){
+    const partes = comandos.split('/');
+    const limites = partes[0].split(',');
+    
+    return parseInt(limites[1]);
+  }
+
+  obtenerX(posicion){
+    const coordenadas = posicion.match(/\d+/g); 
+    return parseInt(coordenadas[0]);
+  }
+
+  obtenerY(posicion){
+    const coordenadas = posicion.match(/\d+/g); 
+    return parseInt(coordenadas[1]);
+  }
+  validarPosicionInicialDentroLimites(comandos){
+    const limiteX = this.obtenerLimiteX(comandos);
+    const limiteY = this.obtenerLimiteY(comandos);
+
+    const posicionInicial = this.obtenerPosicionInicial(comandos);
+
+    const x = this.obtenerX(posicionInicial);
+    const y = this.obtenerY(posicionInicial);
   
     if (x < 0 || x > limiteX || y < 0 || y > limiteY) {
       return "La posición inicial está fuera de los límites permitidos.";

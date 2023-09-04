@@ -57,14 +57,14 @@ describe("Permitir que el usuario ingrese los comandos a ejecutar y  los muestre
 describe("Validar que la posicion inicial se encuentre dentro de los limites", () => {
 
   it("Debería devolver un mensaje de error si la posición inicial está fuera de los límites fijos 10*10", () => {
-    const comandos = "5,5/10,12N/IADDAIAA";
+    const comandos = "10,10/10,12N/IADDAIAA";
     const resultado = controladorAuto.validarPosicionInicialDentroLimites(comandos);
     const mensaje = "La posición inicial está fuera de los límites permitidos.";
     expect(resultado).toEqual(mensaje);
   });
 
   it("No debería devolver un mensaje de error si la posición inicial está dentro de los límites fijos 10*10", () => {
-    const comandos = "5,5/1,2N/IADDAIAA";
+    const comandos = "10,10/1,2N/IADDAIAA";
     const resultado = controladorAuto.validarPosicionInicialDentroLimites(comandos);
     const mensaje = "";
     expect(resultado).toEqual(mensaje);
