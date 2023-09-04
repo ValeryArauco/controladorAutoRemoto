@@ -117,4 +117,10 @@ describe("Ejecutar el comando 'I' (cambiar dirección) y mostrar la posición fi
     expect(nuevaPosicion).toEqual('1,2N');
   });
 
+  it("Debería cambiar la dirección de 'O' a 'S'", () => {
+    const posicionActual = "5,5/1,2O/I";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(posicionActual);
+    expect(nuevaPosicion).toEqual('1,2S');
+  });
+
 });
