@@ -65,10 +65,18 @@ class ControladorAuto{
     switch (direccionActual) {
       case 'N':
         return nuevaPosicion + "O";
+      case 'E':
+        return nuevaPosicion + "N";
   
       default:
         return posicionActual; 
     }
+  }
+
+  ejecutarComandos(comandos){
+    const posicionInicial = this.obtenerPosicionInicial(comandos);
+    const posicionFinal = this.girarIzquierda(posicionInicial);
+    return posicionFinal;
   }
 }
 
