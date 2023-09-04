@@ -72,12 +72,21 @@ class ControladorAuto{
       case 'S':
         return nuevaPosicion + "E";
   
-      default:
-        return posicionActual; 
     }
   }
 
+  girarDerecha(posicionActual){
+    const direccionActual = posicionActual[posicionActual.length - 1].toUpperCase();
+    const nuevaPosicion = posicionActual.slice(0, -1);
+
+    switch (direccionActual) {
+      case 'N':
+        return nuevaPosicion + "E";
+      case 'E':
+        return nuevaPosicion + "S";
   
+    }
+  }
 
   ejecutarComandos(comandos){
     const posicionInicial = this.obtenerPosicionInicial(comandos);
@@ -86,10 +95,8 @@ class ControladorAuto{
       case 'I':
         return this.girarIzquierda(posicionInicial);
       case 'D':
-        return posicionInicial.slice(0, -1) + "E";
-  
-      default:
-        return posicionInicial; 
+        return this.girarDerecha(posicionInicial);
+
     }
   }
 }

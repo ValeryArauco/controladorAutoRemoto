@@ -137,4 +137,10 @@ describe("Ejecutar el comando 'D' (cambiar dirección) y mostrar la posición fi
     const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,2E');
   });
+
+  it("Debería cambiar la dirección de 'E' a 'S'", () => {
+    const comandos = "5,5/1,2E/D";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
+    expect(nuevaPosicion).toEqual('1,2S');
+  });
 });
