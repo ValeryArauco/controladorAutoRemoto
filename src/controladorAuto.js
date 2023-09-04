@@ -104,6 +104,8 @@ class ControladorAuto{
         return `${x},${y - 1}${direccionActual}`;
       case 'E':
         return `${x + 1},${y}${direccionActual}`;
+      case 'O':
+        return `${x - 1},${y}${direccionActual}`;
     }
   }
 
