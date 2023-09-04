@@ -128,7 +128,8 @@ class ControladorAuto{
         nuevoX = x + 1;
         break;
       case 'O':
-        return `${x - 1},${y}${direccionActual}`;
+        nuevoX = x - 1;
+        break;
     }
 
     if (nuevoX >= 0 && nuevoX <= limiteX && nuevoY >= 0 && nuevoY <= limiteY) {
