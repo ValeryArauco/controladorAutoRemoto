@@ -106,27 +106,35 @@ describe("Validar que el formato de los limites ingresados -> mostrar un mensaje
 
 describe("Ejecutar el comando 'I' (cambiar dirección) y mostrar la posición final", () => {
   it("Debería cambiar la dirección de 'N' a 'O'", () => {
-    const posicionActual = "5,5/1,2N/I";
-    const nuevaPosicion = controladorAuto.ejecutarComandos(posicionActual);
+    const comandos = "5,5/1,2N/I";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,2O');
   });
 
   it("Debería cambiar la dirección de 'E' a 'N'", () => {
-    const posicionActual = "5,5/1,2E/I";
-    const nuevaPosicion = controladorAuto.ejecutarComandos(posicionActual);
+    const comandos = "5,5/1,2E/I";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,2N');
   });
 
   it("Debería cambiar la dirección de 'O' a 'S'", () => {
-    const posicionActual = "5,5/1,2O/I";
-    const nuevaPosicion = controladorAuto.ejecutarComandos(posicionActual);
+    const comandos = "5,5/1,2O/I";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,2S');
   });
 
   it("Debería cambiar la dirección de 'S' a 'E'", () => {
-    const posicionActual = "5,5/1,2S/I";
-    const nuevaPosicion = controladorAuto.ejecutarComandos(posicionActual);
+    const comandos = "5,5/1,2S/I";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,2E');
   });
 
+});
+
+describe("Ejecutar el comando 'D' (cambiar dirección) y mostrar la posición final", () => {
+  it("Debería cambiar la dirección de 'N' a 'E'", () => {
+    const comandos = "5,5/1,2N/D";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
+    expect(nuevaPosicion).toEqual('1,2E');
+  });
 });

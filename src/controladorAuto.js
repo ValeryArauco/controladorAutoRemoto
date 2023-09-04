@@ -77,10 +77,20 @@ class ControladorAuto{
     }
   }
 
+  
+
   ejecutarComandos(comandos){
     const posicionInicial = this.obtenerPosicionInicial(comandos);
-    const posicionFinal = this.girarIzquierda(posicionInicial);
-    return posicionFinal;
+    const comandoAEjecutar = comandos[comandos.length-1];
+    switch (comandoAEjecutar) {
+      case 'I':
+        return this.girarIzquierda(posicionInicial);
+      case 'D':
+        return posicionInicial.slice(0, -1) + "E";
+  
+      default:
+        return posicionInicial; 
+    }
   }
 }
 
