@@ -164,9 +164,17 @@ describe("Ejecutar el comando 'A' (Avanzar) y mostrar la posición final", () =>
     expect(nuevaPosicion).toEqual('1,3N');
   });
 
-  it("Debería avanzar una posición hacia el S y mostrar la nueva posición" , () => {
+  it("Debería avanzar una posición hacia el Sud y mostrar la nueva posición" , () => {
     const comandos = "5,5/1,2S/A";
     const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
     expect(nuevaPosicion).toEqual('1,1S');
   });
+
+  it("Debería avanzar una posición hacia el Este y mostrar la nueva posición", () => {
+    const posicionActual = "1,2E";
+    const nuevaPosicion = controladorAuto.avanzar(posicionActual);
+    expect(nuevaPosicion).toEqual("2,2E");
+  });
+
+
 });
