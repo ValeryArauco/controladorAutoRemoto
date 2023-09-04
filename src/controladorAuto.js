@@ -109,15 +109,13 @@ class ControladorAuto{
   
     }
   }
-  avanzar(posicionActual){
+  avanzar(posicionActual, limiteX, limiteY){
     const direccionActual = posicionActual[posicionActual.length - 1];
     const x = this.obtenerX(posicionActual);
     const y = this.obtenerY(posicionActual);
 
     let nuevoX = x;
     let nuevoY = y;
-    const limiteX = 5;
-    const limiteY = 5;
 
     switch (direccionActual) {
       case 'N':
@@ -127,7 +125,8 @@ class ControladorAuto{
         nuevoY = y - 1;
         break;
       case 'E':
-        return `${x + 1},${y}${direccionActual}`;
+        nuevoX = x + 1;
+        break;
       case 'O':
         return `${x - 1},${y}${direccionActual}`;
     }
@@ -151,7 +150,7 @@ class ControladorAuto{
       case 'D':
         return this.girarDerecha(posicionInicial);
       case 'A':
-        return this.avanzar(posicionInicial);
+        return this.avanzar(posicionInicial, this.obtenerLimiteX(comandos), this.obtenerLimiteY(comandos));
     }
   }
 
