@@ -12,9 +12,9 @@ class ControladorAuto{
     const posicionInicial = partes[1];
     
     if (!formatoValido.test(posicionInicial)) {
-      return "El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).";
+      return "<p>El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).</p>";
     }
-    return "Formato válido.";
+    return "";
   }
 
 
@@ -56,7 +56,7 @@ class ControladorAuto{
     const y = this.obtenerY(posicionInicial);
   
     if (x < 0 || x > limiteX || y < 0 || y > limiteY) {
-      return "La posición inicial está fuera de los límites permitidos.";
+      return "<p>La posición inicial está fuera de los límites permitidos.</p>";
     }
   
     return "";
@@ -70,7 +70,7 @@ class ControladorAuto{
     const formatoValido = /^\d+,\d+$/;
     
     if (!formatoValido.test(limites)) {
-      return "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros."; 
+      return "<p>El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.</p>"; 
     }
 
     return ""; 
@@ -172,11 +172,26 @@ class ControladorAuto{
   }
   
   ejecutarControlador(comandos){
-    return "<p>Posicion Inicial: " + this.obtenerPosicionInicial(comandos) + "</p>"+
-    "<p>Comandos: " + this.obtenerComandos(comandos) + "</p>"+
-    "<p>Posicion Final: " + this.ejecutarVariosComandos(comandos) + "</p>"+
-    "<p>Mensajes: " + "</p>";
+    let posicionInicial = "";
+    let comandosAEjecutar = "";
+    let posicionFinal = "";
+    let mensajes = "";
 
+    if (this.validarPosicionInicial(comandos) == "" && this.validarFormatoLimites(comandos) == "" && this.validarPosicionInicialDentroLimites(comandos) == ""){
+      posicionInicial = this.obtenerPosicionInicial(comandos);
+      comandosAEjecutar = this.obtenerComandos(comandos);
+      posicionFinal = this.ejecutarVariosComandos(comandos);
+   } 
+   else
+   {
+      mensajes = "<p>Mensajes:</p>" + 
+      this.validarPosicionInicial(comandos) +
+      this.validarFormatoLimites(comandos);
+   }
+   return "<p>Posicion Inicial: " + posicionInicial + "</p>"+
+    "<p>Comandos: " + comandosAEjecutar + "</p>"+
+    "<p>Posicion Final: " + posicionFinal + "</p>"+
+    mensajes;
   }
 }
 

@@ -23,7 +23,7 @@ describe("Validar que la posicion inicial siga el formato de la cadena -> mostra
     
     const comandos = "5,5/1,2XYZ/IAIAIAIAA";
     const resultado = controladorAuto.validarPosicionInicial(comandos);
-    const mensaje = "El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).";
+    const mensaje = "<p>El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).</p>";
     expect(resultado).toEqual(mensaje);
   });
 
@@ -31,7 +31,7 @@ describe("Validar que la posicion inicial siga el formato de la cadena -> mostra
     
     const comandos = "5,5/1,2N/IAIAIAIAA";
     const resultado = controladorAuto.validarPosicionInicial(comandos);
-    const mensaje = "Formato válido."
+    const mensaje = ""
     expect(resultado).toEqual(mensaje);
   });
   
@@ -59,7 +59,7 @@ describe("Validar que la posicion inicial se encuentre dentro de los limites", (
   it("Debería devolver un mensaje de error si la posición inicial está fuera de los límites fijos 10*10", () => {
     const comandos = "10,10/10,12N/IADDAIAA";
     const resultado = controladorAuto.validarPosicionInicialDentroLimites(comandos);
-    const mensaje = "La posición inicial está fuera de los límites permitidos.";
+    const mensaje = "<p>La posición inicial está fuera de los límites permitidos.</p>";
     expect(resultado).toEqual(mensaje);
   });
 
@@ -73,7 +73,7 @@ describe("Validar que la posicion inicial se encuentre dentro de los limites", (
   it("Debería devolver un mensaje de error si la posición inicial está fuera de los límites ingresados por el usuario", () => {
     const comandos = "5,5/6,6N/IADDAIAA";
     const resultado = controladorAuto.validarPosicionInicialDentroLimites(comandos);
-    const mensaje = "La posición inicial está fuera de los límites permitidos.";
+    const mensaje = "<p>La posición inicial está fuera de los límites permitidos.</p>";
     expect(resultado).toEqual(mensaje);
   });
 
@@ -92,7 +92,7 @@ describe("Validar que el formato de los limites ingresados -> mostrar un mensaje
   it("Debería devolver un mensaje de error si el formato de los límites es incorrecto", () => {
     const comandos = "5x5/1,2N/IAIAIAIAA"; 
     const resultado = controladorAuto.validarFormatoLimites(comandos);
-    const mensaje = "El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.";
+    const mensaje = "<p>El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.</p>";
     expect(resultado).toEqual(mensaje);
   });
 
@@ -228,8 +228,15 @@ describe("Permitir ejecutar varios comandos y mostrarlos", () => {
 describe("Mostrar posicion inicial, comandos, posicion final y mensajes de error si existen", () => {
   it("Deberia mostrar posicion inicial, comandos, posicion final y ningun mensajes de error", () => {
     const comandos = "5,5/3,3E/AADAADADDA";
-    const nuevaPosicion = controladorAuto.ejecutarControlador(comandos);
-    const resultado =  "<p>Posicion Inicial: 3,3E</p><p>Comandos: AADAADADDA</p><p>Posicion Final: 5,1E</p><p>Mensajes: </p>"
-    expect(nuevaPosicion).toEqual(resultado);
+    const resultadoObtenido = controladorAuto.ejecutarControlador(comandos);
+    const resultadoEsperado =  "<p>Posicion Inicial: 3,3E</p><p>Comandos: AADAADADDA</p><p>Posicion Final: 5,1E</p>"
+    expect(resultadoObtenido).toEqual(resultadoEsperado);
+  });
+
+  it("Deberia mostrar posicion inicial, comandos, posicion final y mensajes de error de formato", () => {
+    const comandos = "55/3,3L/AADAADADDA";
+    const resultadoObtenido = controladorAuto.ejecutarControlador(comandos);
+    const resultadoEsperado =  "<p>Posicion Inicial: </p><p>Comandos: </p><p>Posicion Final: </p><p>Mensajes:</p><p>El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).</p><p>El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.</p>";
+    expect(resultadoObtenido).toEqual(resultadoEsperado);
   });
 });
