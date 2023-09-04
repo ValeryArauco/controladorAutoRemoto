@@ -91,6 +91,19 @@ class ControladorAuto{
   
     }
   }
+  avanzar(posicionActual){
+    const direccionActual = posicionActual[posicionActual.length - 1];
+    const nuevaPosicion = posicionActual.slice(0, -1);
+    const x = parseInt(nuevaPosicion.split(',')[0]);
+    const y = parseInt(nuevaPosicion.split(',')[1]);
+
+    switch (direccionActual) {
+      case 'N':
+        return `${x},${y + 1}${direccionActual}`;
+      case 'S':
+        return `${x},${y - 1}${direccionActual}`;
+    }
+  }
 
   ejecutarComandos(comandos){
     const posicionInicial = this.obtenerPosicionInicial(comandos);
@@ -101,7 +114,7 @@ class ControladorAuto{
       case 'D':
         return this.girarDerecha(posicionInicial);
       case 'A':
-        return "1,3N";
+        return this.avanzar(posicionInicial);
 
     }
   }
