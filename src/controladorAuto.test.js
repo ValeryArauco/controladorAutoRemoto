@@ -225,3 +225,11 @@ describe("Permitir ejecutar varios comandos y mostrarlos", () => {
   });
   
 });
+describe("Mostrar posicion inicial, comandos, posicion final y mensajes de error si existen", () => {
+  it("Deberia mostrar posicion inicial, comandos, posicion final y ningun mensajes de error", () => {
+    const comandos = "5,5/3,3E/AADAADADDA";
+    const nuevaPosicion = controladorAuto.ejecutarControlador(comandos);
+    const resultado =  "<p>Posicion Inicial: 3,3E</p><p>Comandos: AADAADADDA</p><p>Posicion Final: 5,1E</p><p>Mensajes: </p>"
+    expect(nuevaPosicion).toEqual(resultado);
+  });
+});

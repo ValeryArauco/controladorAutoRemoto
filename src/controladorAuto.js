@@ -170,8 +170,15 @@ class ControladorAuto{
     }
     return posicionActual;
   }
-}
+  
+  ejecutarControlador(comandos){
+    return "<p>Posicion Inicial: " + this.obtenerPosicionInicial(comandos) + "</p>"+
+    "<p>Comandos: " + this.obtenerComandos(comandos) + "</p>"+
+    "<p>Posicion Final: " + this.ejecutarVariosComandos(comandos) + "</p>"+
+    "<p>Mensajes: " + "</p>";
 
+  }
+}
 
 
 export default ControladorAuto;
