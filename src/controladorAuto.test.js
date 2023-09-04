@@ -103,3 +103,12 @@ describe("Validar que el formato de los limites ingresados -> mostrar un mensaje
     expect(resultado).toEqual(mensaje);
   });
 });
+
+describe("Ejecutar el comando 'I' (cambiar dirección) y mostrar la posición final", () => {
+  it("Debería cambiar la dirección de 'N' a 'O'", () => {
+    const posicionActual = '1,2N';
+    const nuevaPosicion = controladorAuto.girarIzquierda(posicionActual);
+    expect(nuevaPosicion).toEqual('1,2O');
+  });
+
+});

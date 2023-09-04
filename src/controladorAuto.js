@@ -58,8 +58,18 @@ class ControladorAuto{
     return ""; 
   }
 
-  
+  girarIzquierda(posicionActual){
+    const direccionActual = posicionActual[posicionActual.length - 1].toUpperCase();
+    const nuevaPosicion = posicionActual.slice(0, -1);
 
+    switch (direccionActual) {
+      case 'N':
+        return nuevaPosicion + "O";
+  
+      default:
+        return posicionActual; 
+    }
+  }
 }
 
 export default ControladorAuto;
