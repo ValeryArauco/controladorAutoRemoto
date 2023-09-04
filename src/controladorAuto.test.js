@@ -217,5 +217,11 @@ describe("Permitir ejecutar varios comandos y mostrarlos", () => {
     const nuevaPosicion = controladorAuto.ejecutarVariosComandos(comandos);
     expect(nuevaPosicion).toEqual("1,3N");
   });
+
+  it("Debería mostrar la posicion final tras ejecutar los comandos e ignorar aquellos que no estan definidos", () => {
+    const comandos = "5,5/1,2N/IAIAOLIAIAAJK";
+    const nuevaPosicion = controladorAuto.ejecutarVariosComandos(comandos);
+    expect(nuevaPosicion).toEqual("1,3N");
+  });
   
 });

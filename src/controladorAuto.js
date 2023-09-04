@@ -152,6 +152,8 @@ class ControladorAuto{
         return this.girarDerecha(posicionInicial);
       case 'A':
         return this.avanzar(posicionInicial, this.obtenerLimiteX(comandos), this.obtenerLimiteY(comandos));
+      default:
+        return posicionInicial;
     }
   }
 
