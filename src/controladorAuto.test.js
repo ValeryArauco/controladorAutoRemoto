@@ -233,10 +233,17 @@ describe("Mostrar posicion inicial, comandos, posicion final y mensajes de error
     expect(resultadoObtenido).toEqual(resultadoEsperado);
   });
 
-  it("Deberia mostrar posicion inicial, comandos, posicion final y mensajes de error de formato", () => {
+  it("Deberia mostrar posicion inicial, comandos, posicion final vacios y mensajes de error de formato", () => {
     const comandos = "55/3,3L/AADAADADDA";
     const resultadoObtenido = controladorAuto.ejecutarControlador(comandos);
     const resultadoEsperado =  "<p>Posicion Inicial: </p><p>Comandos: </p><p>Posicion Final: </p><p>Mensajes:</p><p>El formato de la posición inicial es incorrecto. Debe ser 'X,YD' donde X y Y son números y D es una dirección (N, E, O, S).</p><p>El formato de los límites es incorrecto. Debe ser 'X,Y' donde X e Y son números enteros.</p>";
+    expect(resultadoObtenido).toEqual(resultadoEsperado);
+  });
+
+  it("Deberia mostrar posicion inicial, comandos, posicion final vacios y mensajes de error de posicion inicial fuera del limite", () => {
+    const comandos = "5,5/3,6N/AADAADADDA";
+    const resultadoObtenido = controladorAuto.ejecutarControlador(comandos);
+    const resultadoEsperado =  "<p>Posicion Inicial: </p><p>Comandos: </p><p>Posicion Final: </p><p>Mensajes:</p><p>La posición inicial está fuera de los límites permitidos.</p>";
     expect(resultadoObtenido).toEqual(resultadoEsperado);
   });
 });

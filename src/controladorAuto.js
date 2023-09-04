@@ -186,7 +186,8 @@ class ControladorAuto{
    {
       mensajes = "<p>Mensajes:</p>" + 
       this.validarPosicionInicial(comandos) +
-      this.validarFormatoLimites(comandos);
+      this.validarFormatoLimites(comandos) +
+      this.validarPosicionInicialDentroLimites(comandos);
    }
    return "<p>Posicion Inicial: " + posicionInicial + "</p>"+
     "<p>Comandos: " + comandosAEjecutar + "</p>"+
