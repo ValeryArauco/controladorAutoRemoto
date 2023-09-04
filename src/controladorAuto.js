@@ -189,10 +189,13 @@ class ControladorAuto{
       this.validarFormatoLimites(comandos) +
       this.validarPosicionInicialDentroLimites(comandos);
    }
-   return "<p>Posicion Inicial: " + posicionInicial + "</p>"+
-    "<p>Comandos: " + comandosAEjecutar + "</p>"+
-    "<p>Posicion Final: " + posicionFinal + "</p>"+
-    mensajes;
+
+   const respuesta = "<p>Posicion Inicial: " + posicionInicial + "</p>"+
+   "<p>Comandos: " + comandosAEjecutar + "</p>"+
+   "<p>Posicion Final: " + posicionFinal + "</p>"+
+   mensajes;
+
+   return respuesta;
   }
 }
 
