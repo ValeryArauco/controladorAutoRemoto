@@ -111,9 +111,8 @@ class ControladorAuto{
   }
   avanzar(posicionActual){
     const direccionActual = posicionActual[posicionActual.length - 1];
-    const nuevaPosicion = posicionActual.slice(0, -1);
-    const x = parseInt(nuevaPosicion.split(',')[0]);
-    const y = parseInt(nuevaPosicion.split(',')[1]);
+    const x = this.obtenerX(posicionActual);
+    const y = this.obtenerY(posicionActual);
 
     let nuevoX = x;
     let nuevoY = y;
@@ -125,7 +124,8 @@ class ControladorAuto{
         nuevoY = y + 1;
         break;
       case 'S':
-        return `${x},${y - 1}${direccionActual}`;
+        nuevoY = y - 1;
+        break;
       case 'E':
         return `${x + 1},${y}${direccionActual}`;
       case 'O':

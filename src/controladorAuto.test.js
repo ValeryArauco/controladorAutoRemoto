@@ -191,4 +191,9 @@ describe("Ignorar que el auto se salga de la superficie al ejecutar el comando '
     expect(nuevaPosicion).toEqual("2,5N");
   });
 
+  it("Debería ignorar avanzar una posición y mostrar la misma posición ingresada cuando la direccion es S", () => {
+    const comandos = "5,5/5,0S/A";
+    const nuevaPosicion = controladorAuto.ejecutarComandos(comandos);
+    expect(nuevaPosicion).toEqual("5,0S");
+  });
 });
