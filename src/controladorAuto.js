@@ -3,7 +3,7 @@ class ControladorAuto{
   
   obtenerPosicionInicial(comandos){
     const partes = comandos.split('/');
-    return partes[1];
+    return partes[1].toUpperCase();
   }
 
   validarPosicionInicial(comandos){
@@ -20,7 +20,7 @@ class ControladorAuto{
 
   obtenerComandos(comandos){
     const partes = comandos.split('/');
-    return partes[2];
+    return partes[2].toUpperCase();
   }
 
   obtenerLimiteX(comandos){
