@@ -181,25 +181,36 @@ class ControladorAuto{
     }
   }
   
+  obtenerErrores(comandos)
+  {
+    let mensajes = "ninguno"
+    if (this.validarFormatoEntrada(comandos) === "") {
+      if (this.validarPosicionInicial(comandos) != "" || this.validarFormatoLimites(comandos) != "" || this.validarPosicionInicialDentroLimites(comandos) != "") {
+        mensajes = 
+        this.validarPosicionInicial(comandos) +
+        this.validarFormatoLimites(comandos) +
+        this.validarPosicionInicialDentroLimites(comandos);
+      }
+    }
+    else{
+      mensajes = this.validarFormatoEntrada(comandos);
+    }
+    return mensajes;
+  }
   ejecutarControlador(comandos){
     let posicionInicial = "";
     let comandosAEjecutar = "";
     let posicionFinal = "";
     let mensajes = "";
 
-    if (this.validarFormatoEntrada(comandos) === "") {
-        if (this.validarPosicionInicial(comandos) === "" && this.validarFormatoLimites(comandos) === "" && this.validarPosicionInicialDentroLimites(comandos) === "") {
-            posicionInicial = this.obtenerPosicionInicial(comandos);
-            comandosAEjecutar = this.obtenerComandos(comandos);
-            posicionFinal = this.ejecutarVariosComandos(comandos);
-        } else {
-            mensajes = "<p>Mensajes:</p>" + 
-                this.validarPosicionInicial(comandos) +
-                this.validarFormatoLimites(comandos) +
-                this.validarPosicionInicialDentroLimites(comandos);
-        }
-    } else {
-        mensajes = "<p>Mensajes:</p>" + this.validarFormatoEntrada(comandos);
+    
+    if (this.obtenerErrores(comandos) == "ninguno"){
+      posicionInicial = this.obtenerPosicionInicial(comandos);
+      comandosAEjecutar = this.obtenerComandos(comandos);
+      posicionFinal = this.ejecutarVariosComandos(comandos);
+    }
+    else{
+      mensajes = "<p>Mensajes:</p>" + this.obtenerErrores(comandos);
     }
 
     const respuesta = "<p>Posicion Inicial: " + posicionInicial + "</p>"+
