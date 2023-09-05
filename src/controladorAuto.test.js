@@ -246,4 +246,13 @@ describe("Mostrar posicion inicial, comandos, posicion final y mensajes de error
     const resultadoEsperado =  "<p>Posicion Inicial: </p><p>Comandos: </p><p>Posicion Final: </p><p>Mensajes:</p><p>La posición inicial está fuera de los límites permitidos.</p>";
     expect(resultadoObtenido).toEqual(resultadoEsperado);
   });
+
+  it("Deberia mostrar posicion inicial, comandos, posicion final vacios y un mensaje de error corrigiendo la forma en la que se ingresaron los comandos", () => {
+    const comandos = "5,,6N/AADAADADDA";
+    const resultadoObtenido = controladorAuto.ejecutarControlador(comandos);
+    const resultadoEsperado =  "<p>Posicion Inicial: </p><p>Comandos: </p><p>Posicion Final: </p><p>Mensajes:</p><p>Formato de comandos incorrecto. Debe ser 'X,Y/X,YD/Comandos'.</p>";
+    expect(resultadoObtenido).toEqual(resultadoEsperado);
+  });
 });
+
+

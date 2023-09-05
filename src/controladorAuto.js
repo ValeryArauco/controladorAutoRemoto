@@ -170,6 +170,16 @@ class ControladorAuto{
     }
     return posicionActual;
   }
+  validarFormatoEntrada(entrada){
+    const partes = entrada.split("/");
+
+    if (partes.length != 3) {
+      return "<p>Formato de comandos incorrecto. Debe ser 'X,Y/X,YD/Comandos'.</p>";
+    }
+    else {
+      return "";
+    }
+  }
   
   ejecutarControlador(comandos){
     let posicionInicial = "";
@@ -177,26 +187,29 @@ class ControladorAuto{
     let posicionFinal = "";
     let mensajes = "";
 
-    if (this.validarPosicionInicial(comandos) == "" && this.validarFormatoLimites(comandos) == "" && this.validarPosicionInicialDentroLimites(comandos) == ""){
-      posicionInicial = this.obtenerPosicionInicial(comandos);
-      comandosAEjecutar = this.obtenerComandos(comandos);
-      posicionFinal = this.ejecutarVariosComandos(comandos);
-   } 
-   else
-   {
-      mensajes = "<p>Mensajes:</p>" + 
-      this.validarPosicionInicial(comandos) +
-      this.validarFormatoLimites(comandos) +
-      this.validarPosicionInicialDentroLimites(comandos);
-   }
+    if (this.validarFormatoEntrada(comandos) === "") {
+        if (this.validarPosicionInicial(comandos) === "" && this.validarFormatoLimites(comandos) === "" && this.validarPosicionInicialDentroLimites(comandos) === "") {
+            posicionInicial = this.obtenerPosicionInicial(comandos);
+            comandosAEjecutar = this.obtenerComandos(comandos);
+            posicionFinal = this.ejecutarVariosComandos(comandos);
+        } else {
+            mensajes = "<p>Mensajes:</p>" + 
+                this.validarPosicionInicial(comandos) +
+                this.validarFormatoLimites(comandos) +
+                this.validarPosicionInicialDentroLimites(comandos);
+        }
+    } else {
+        mensajes = "<p>Mensajes:</p>" + this.validarFormatoEntrada(comandos);
+    }
 
-   const respuesta = "<p>Posicion Inicial: " + posicionInicial + "</p>"+
-   "<p>Comandos: " + comandosAEjecutar + "</p>"+
-   "<p>Posicion Final: " + posicionFinal + "</p>"+
-   mensajes;
+    const respuesta = "<p>Posicion Inicial: " + posicionInicial + "</p>"+
+        "<p>Comandos: " + comandosAEjecutar + "</p>"+
+        "<p>Posicion Final: " + posicionFinal + "</p>"+
+        mensajes;
 
-   return respuesta;
+    return respuesta;
   }
+
 }
 
 
